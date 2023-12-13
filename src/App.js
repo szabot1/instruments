@@ -1,25 +1,69 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  NavLink,
+  Outlet,
+} from "react-router-dom";
+import InstrumentListPage from "./instrument-list";
+import InstrumentSinglePage from "./instrument-single";
+import InstrumentCreatePage from "./instrument-create";
+import InstrumentModifyPage from "./instrument-modify";
+
+const router = createBrowserRouter([
+  {
+    element: <AppLayout />,
+    children: [
+      {
+        path: "/",
+        element: <InstrumentListPage />,
+      },
+      {
+        path: "/hangszer/:id",
+        element: <InstrumentSinglePage />,
+      },
+      {
+        path: "/hangszer/:id/modositas",
+        element: <InstrumentModifyPage />,
+      },
+      {
+        path: "/uj-hangszer",
+        element: <InstrumentCreatePage />,
+      },
+    ],
+  },
+]);
+
+function AppLayout() {
+  return (
+    <>
+      <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <NavLink to="/" className="nav-link" activeClassName="active">
+                Hangszerek
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                to="/uj-hangszer"
+                className="nav-link"
+                activeClassName="active"
+              >
+                Új hangszer
+              </NavLink>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <Outlet />
+    </>
+  );
+}
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

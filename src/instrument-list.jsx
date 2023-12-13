@@ -29,7 +29,12 @@ export default function InstrumentListPage() {
 
           <div className="row">
             {instruments.map((instrument) => (
-              <div key={instrument.id} className="col-12 col-md-6 col-lg-4">
+              <NavLink
+                to={`/hangszer/${instrument.id}`}
+                key={instrument.id}
+                className="col-12 col-md-6 col-lg-4"
+                style={{ textDecoration: "none" }}
+              >
                 <div className="card mb-4">
                   <img
                     src={
@@ -51,15 +56,9 @@ export default function InstrumentListPage() {
                       {new Intl.NumberFormat().format(instrument.quantity)} db
                       készleten
                     </p>
-                    <NavLink
-                      to={`/hangszer/${instrument.id}`}
-                      className="btn btn-primary"
-                    >
-                      Megtekintés
-                    </NavLink>
                   </div>
                 </div>
-              </div>
+              </NavLink>
             ))}
           </div>
         </>

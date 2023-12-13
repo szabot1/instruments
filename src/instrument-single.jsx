@@ -53,12 +53,23 @@ export default function InstrumentSinglePage() {
               </p>
             </div>
 
-            <div className="mt-2 mb-2">
+            <div
+              className="mt-2 mb-2"
+              style={{
+                display: "flex",
+                gap: "0.75rem",
+                justifyContent: "center",
+              }}
+            >
               <NavLink
                 to={`/hangszer/${id}/modositas`}
                 className="btn btn-primary"
               >
                 Módosítás
+              </NavLink>
+
+              <NavLink to={`/hangszer/${id}/torles`} className="btn btn-danger">
+                Törlés
               </NavLink>
             </div>
           </div>

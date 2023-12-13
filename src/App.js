@@ -9,6 +9,7 @@ import InstrumentListPage from "./instrument-list";
 import InstrumentSinglePage from "./instrument-single";
 import InstrumentCreatePage from "./instrument-create";
 import InstrumentModifyPage from "./instrument-modify";
+import InstrumentDeletePage from "./instrument-delete";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "/hangszer/:id/modositas",
         element: <InstrumentModifyPage />,
+      },
+      {
+        path: "/hangszer/:id/torles",
+        element: <InstrumentDeletePage />,
       },
       {
         path: "/uj-hangszer",
